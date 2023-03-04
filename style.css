@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex ;
+    height: 100vh;
+    align-items: center;
+    align-content: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.container{
+    display:flex ;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    background: transparent ;
+    position: fixed ;
+}
+
+.musicBar {
+    display: flex ;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.octave{
+    display: flex ;
+    flex-direction: row;
+    align-items: center;
+    background-image: url(Images/bar.png) ;
+    background-position: center;
+    background-repeat:repeat-x ;
+}
+
+.musicButton{
+    border-radius: 100%;
+    padding: 5px ;
+    margin: 7px 20px ;
+    background-color: #fefaf2 ;
+    box-sizing:border-box ;
+    color: #b6b4a3;
+}
+
+.musicButton:active, .inner:active, .activeButton{
+    background-color:#c1fde6 ;
+    border-color: #aef2d5;
+    transform: scale(80%);
+}
+
+.inner{
+    width: 65px ;
+    height: 65px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border: 5px solid #edeada ;
+    border-radius: 100% ;
+}
+
+.inner p {
+    margin: 0;
+}
+
+.musicBar img {
+    margin-right: 40px; 
+}
+
+.musicButton:nth-child(1) {
+    background-image: url('Images/Do.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musicButton:nth-child(2) {
+    background-image: url('Images/Re.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musicButton:nth-child(3) {
+    background-image: url('Images/Mi.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musicButton:nth-child(4){
+    background-image: url('Images/Fa.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musicButton:nth-child(5) {
+    background-image: url('Images/Sol.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musicButton:nth-child(6) {
+    background-image: url('Images/La.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.musicButton:nth-child(7) {
+    background-image: url('Images/Si.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
