@@ -29,22 +29,16 @@ const clock = new THREE.Clock()
 let mixer ;
 
 function initializeLights() {
-    const ambientLight = new THREE.AmbientLight(0xeededed)
+    const ambientLight = new THREE.AmbientLight()
     scene.add(ambientLight)
 
-    const stageSpotlight = new THREE.SpotLight()
-    stageSpotlight.position.set(-0.15, 4.7, -4)
-    stageSpotlight.intensity = 30
-    //0x8a2be2
-    stageSpotlight.angle = 100
-    stageSpotlight.target.position.set(0 , 0.1, -4.3)
-    stageSpotlight.penumbra = 1
-    scene.add(stageSpotlight)
-    scene.add(stageSpotlight.target)
-
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    scene.add(light);
-    light.position.set(1.7, 1, -1);
+    let stageSpotLight = initializeStageLight() //0x8a2be2
+    let lampLightOne = initializeLampLight(1, 3, -4)
+    //let lampLightTwo = initializeLampLight(-0.15, 4.7, -4)
+    //0xeededed
+    scene.add(lampLightOne)
+    scene.add(stageSpotLight)
+    scene.add(stageSpotLight.target)
 }
 
 function loadModel() {
@@ -74,3 +68,22 @@ loadModel()
 renderer.render(scene, camera) ;
 
 animate() ;
+
+function initializeStageLight() {
+    const stageSpotlight = new THREE.SpotLight()
+    stageSpotlight.position.set(-0.15, 4.7, -4)
+    stageSpotlight.intensity = 30 
+    stageSpotlight.angle = 100
+    stageSpotlight.target.position.set(0 , 0.1, -4.3)
+    stageSpotlight.penumbra = 1
+    return stageSpotlight
+}
+
+function initializeLampLight(x, y, z) {
+    const light = new THREE.DirectionalLight(0x8a2be2, 1);
+    light.position.set(x, y, z);
+    light.intensity = 10
+    const dLHelper = new THREE.DirectionalLightHelper(light, 5)
+    scene.add(dLHelper) 
+    return light
+}

@@ -577,20 +577,16 @@ controls.enableDamping = true;
 const clock = new _three.Clock();
 let mixer;
 function initializeLights() {
-    const ambientLight = new _three.AmbientLight(0xeededed);
+    const ambientLight = new _three.AmbientLight();
     scene.add(ambientLight);
-    const stageSpotlight = new _three.SpotLight();
-    stageSpotlight.position.set(-0.15, 4.7, -4);
-    stageSpotlight.intensity = 30;
-    //0x8a2be2
-    stageSpotlight.angle = 100;
-    stageSpotlight.target.position.set(0, 0.1, -4.3);
-    stageSpotlight.penumbra = 1;
-    scene.add(stageSpotlight);
-    scene.add(stageSpotlight.target);
-    const light = new _three.DirectionalLight(0xffffff, 1);
-    scene.add(light);
-    light.position.set(1.7, 1, -1);
+    let stageSpotLight = initializeStageLight() //0x8a2be2
+    ;
+    let lampLightOne = initializeLampLight(1, 3, -4);
+    //let lampLightTwo = initializeLampLight(-0.15, 4.7, -4)
+    //0xeededed
+    scene.add(lampLightOne);
+    scene.add(stageSpotLight);
+    scene.add(stageSpotLight.target);
 }
 function loadModel() {
     new (0, _gltfloader.GLTFLoader)().load("../Assets/Models/MilkBar/MilkBar.gltf", function(gltf) {
@@ -615,6 +611,23 @@ initializeLights();
 loadModel();
 renderer.render(scene, camera);
 animate();
+function initializeStageLight() {
+    const stageSpotlight = new _three.SpotLight();
+    stageSpotlight.position.set(-0.15, 4.7, -4);
+    stageSpotlight.intensity = 30;
+    stageSpotlight.angle = 100;
+    stageSpotlight.target.position.set(0, 0.1, -4.3);
+    stageSpotlight.penumbra = 1;
+    return stageSpotlight;
+}
+function initializeLampLight(x, y, z) {
+    const light = new _three.DirectionalLight(0x8a2be2, 1);
+    light.position.set(x, y, z);
+    light.intensity = 10;
+    const dLHelper = new _three.DirectionalLightHelper(light, 5);
+    scene.add(dLHelper);
+    return light;
+}
 
 },{"three":"8PEUA","three/examples/jsm/controls/OrbitControls":"8AEnt","three/examples/jsm/loaders/GLTFLoader":"38q76"}],"8PEUA":[function(require,module,exports) {
 /**
