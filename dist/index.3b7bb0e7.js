@@ -565,7 +565,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const scene = new _three.Scene();
 scene.background = new _three.Color(0x808080);
-const camera = new _three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 //farthest dist
+const camera = new _three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 //farthest distance
 );
 //posisi kamera
 //camera.position.z = 5 ; //atau

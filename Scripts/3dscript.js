@@ -12,8 +12,8 @@ scene.background = new THREE.Color(0x808080);
 const camera = new THREE.PerspectiveCamera(
     75, //vertical field of view (40-80)
     window.innerWidth/ window.innerHeight, //aspect ratio
-    0.1, //nearest dist
-    1000 //farthest dist
+    0.1, //nearest distance
+    1000 //farthest distance
 ) ;
 //posisi kamera
 //camera.position.z = 5 ; //atau
