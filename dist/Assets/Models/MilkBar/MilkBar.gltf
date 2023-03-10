@@ -4995,9 +4995,9 @@
                 0.03609101474285126
             ],
             "translation" : [
-                0,
-                0.749921441078186,
-                -4.224800109863281
+                0.04930361732840538,
+                0.6542537212371826,
+                -4.344133377075195
             ]
         }
     ],
@@ -12414,6 +12414,49 @@
                     "input" : 855,
                     "interpolation" : "LINEAR",
                     "output" : 972
+                }
+            ]
+        },
+        {
+            "channels" : [
+                {
+                    "sampler" : 0,
+                    "target" : {
+                        "node" : 264,
+                        "path" : "translation"
+                    }
+                },
+                {
+                    "sampler" : 1,
+                    "target" : {
+                        "node" : 264,
+                        "path" : "rotation"
+                    }
+                },
+                {
+                    "sampler" : 2,
+                    "target" : {
+                        "node" : 264,
+                        "path" : "scale"
+                    }
+                }
+            ],
+            "name" : "Lyre bodyAction",
+            "samplers" : [
+                {
+                    "input" : 973,
+                    "interpolation" : "LINEAR",
+                    "output" : 974
+                },
+                {
+                    "input" : 973,
+                    "interpolation" : "LINEAR",
+                    "output" : 975
+                },
+                {
+                    "input" : 973,
+                    "interpolation" : "LINEAR",
+                    "output" : 976
                 }
             ]
         }
@@ -22049,6 +22092,36 @@
             "componentType" : 5126,
             "count" : 1216,
             "type" : "VEC3"
+        },
+        {
+            "bufferView" : 973,
+            "componentType" : 5126,
+            "count" : 109,
+            "max" : [
+                7.125
+            ],
+            "min" : [
+                2.625
+            ],
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 974,
+            "componentType" : 5126,
+            "count" : 109,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 975,
+            "componentType" : 5126,
+            "count" : 109,
+            "type" : "VEC4"
+        },
+        {
+            "bufferView" : 976,
+            "componentType" : 5126,
+            "count" : 109,
+            "type" : "VEC3"
         }
     ],
     "bufferViews" : [
@@ -27264,6 +27337,26 @@
             "buffer" : 0,
             "byteLength" : 14592,
             "byteOffset" : 5256524
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 436,
+            "byteOffset" : 5271116
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1308,
+            "byteOffset" : 5271552
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1744,
+            "byteOffset" : 5272860
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1308,
+            "byteOffset" : 5274604
         }
     ],
     "samplers" : [
@@ -27274,7 +27367,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 5271116,
+            "byteLength" : 5275912,
             "uri" : "MilkBar.bin"
         }
     ]
