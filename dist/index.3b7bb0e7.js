@@ -560,22 +560,27 @@ function hmrAccept(bundle, id) {
 var _three = require("three");
 var _orbitControls = require("three/examples/jsm/controls/OrbitControls");
 var _gltfloader = require("three/examples/jsm/loaders/GLTFLoader");
+let cameraTransition = Array(Tripple());
 const renderer = new _three.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const scene = new _three.Scene();
 scene.background = new _three.Color(0x808080);
+const axesHelper = new _three.AxesHelper(5);
+scene.add(axesHelper);
 const camera = new _three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 //farthest dist
 );
 //posisi kamera
 //camera.position.z = 5 ; //atau
 camera.position.set(0, 0, 2);
-const axesHelper = new _three.AxesHelper(5);
-scene.add(axesHelper);
 const controls = new (0, _orbitControls.OrbitControls)(camera, renderer.domElement);
 controls.enableDamping = true;
 const clock = new _three.Clock();
 let mixer;
+initializeLights();
+loadModel();
+renderer.render(scene, camera);
+animate();
 function initializeLights() {
     const ambientLight = new _three.AmbientLight();
     scene.add(ambientLight);
@@ -587,6 +592,23 @@ function initializeLights() {
     scene.add(lampLightOne);
     scene.add(stageSpotLight);
     scene.add(stageSpotLight.target);
+}
+function initializeStageLight() {
+    const stageSpotlight = new _three.SpotLight();
+    stageSpotlight.position.set(-0.15, 4.7, -4);
+    stageSpotlight.intensity = 30;
+    stageSpotlight.angle = 100;
+    stageSpotlight.target.position.set(0, 0.1, -4.3);
+    stageSpotlight.penumbra = 1;
+    return stageSpotlight;
+}
+function initializeLampLight(x, y, z) {
+    const light = new _three.DirectionalLight(0x8a2be2, 1);
+    light.position.set(x, y, z);
+    light.intensity = 10;
+    const dLHelper = new _three.DirectionalLightHelper(light, 5);
+    scene.add(dLHelper);
+    return light;
 }
 function loadModel() {
     new (0, _gltfloader.GLTFLoader)().load("../Assets/Models/MilkBar/MilkBar.gltf", function(gltf) {
@@ -606,27 +628,6 @@ function animate() {
     controls.update();
     mixer.update(clock.getDelta());
     renderer.render(scene, camera);
-}
-initializeLights();
-loadModel();
-renderer.render(scene, camera);
-animate();
-function initializeStageLight() {
-    const stageSpotlight = new _three.SpotLight();
-    stageSpotlight.position.set(-0.15, 4.7, -4);
-    stageSpotlight.intensity = 30;
-    stageSpotlight.angle = 100;
-    stageSpotlight.target.position.set(0, 0.1, -4.3);
-    stageSpotlight.penumbra = 1;
-    return stageSpotlight;
-}
-function initializeLampLight(x, y, z) {
-    const light = new _three.DirectionalLight(0x8a2be2, 1);
-    light.position.set(x, y, z);
-    light.intensity = 10;
-    const dLHelper = new _three.DirectionalLightHelper(light, 5);
-    scene.add(dLHelper);
-    return light;
 }
 
 },{"three":"8PEUA","three/examples/jsm/controls/OrbitControls":"8AEnt","three/examples/jsm/loaders/GLTFLoader":"38q76"}],"8PEUA":[function(require,module,exports) {

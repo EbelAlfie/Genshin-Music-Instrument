@@ -2,12 +2,17 @@ import * as THREE from 'three' ;
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls' ;
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader' ; 
 
+let cameraTransition = Array(Tripple()) 
+
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight) ;
 document.body.appendChild(renderer.domElement) ;
 
 const scene = new THREE.Scene() ;
-scene.background = new THREE.Color(0x808080)
+scene.background = new THREE.Color(0x808080);
+
+const axesHelper = new THREE.AxesHelper(5) ;
+scene.add(axesHelper) ;
 
 const camera = new THREE.PerspectiveCamera(
     75, //vertical field of view (40-80)
@@ -19,14 +24,18 @@ const camera = new THREE.PerspectiveCamera(
 //camera.position.z = 5 ; //atau
 camera.position.set(0,0,2) ;
 
-const axesHelper = new THREE.AxesHelper(5) ;
-scene.add(axesHelper) ;
-
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 
 const clock = new THREE.Clock()
 let mixer ;
+
+initializeLights()
+loadModel()
+
+renderer.render(scene, camera) ;
+
+animate() ;
 
 function initializeLights() {
     const ambientLight = new THREE.AmbientLight()
@@ -40,34 +49,6 @@ function initializeLights() {
     scene.add(stageSpotLight)
     scene.add(stageSpotLight.target)
 }
-
-function loadModel() {
-    new GLTFLoader().load("../Assets/Models/MilkBar/MilkBar.gltf", function(gltf) {
-        let model = gltf.scene ;
-        scene.add(model) ;
-        console.log(model) ;
-        mixer = new THREE.AnimationMixer(model) ;
-        const clips = gltf.animations ;
-        clips.forEach( ( clip ) => {
-            mixer.clipAction( clip ).play();
-        } );
-        animate() ;
-    })
-}
-
-function animate() {
-    requestAnimationFrame(animate)
-    controls.update()
-    mixer.update(clock.getDelta())
-    renderer.render(scene, camera) 
-}
-
-initializeLights()
-loadModel()
-
-renderer.render(scene, camera) ;
-
-animate() ;
 
 function initializeStageLight() {
     const stageSpotlight = new THREE.SpotLight()
@@ -86,4 +67,25 @@ function initializeLampLight(x, y, z) {
     const dLHelper = new THREE.DirectionalLightHelper(light, 5)
     scene.add(dLHelper) 
     return light
+}
+
+function loadModel() {
+    new GLTFLoader().load("../Assets/Models/MilkBar/MilkBar.gltf", function(gltf) {
+        let model = gltf.scene ;
+        scene.add(model) ;
+        console.log(model) ;
+        mixer = new THREE.AnimationMixer(model) ;
+        const clips = gltf.animations ;
+        clips.forEach(clip => {
+            mixer.clipAction(clip).play();
+        });
+        animate() ;
+    })
+}
+
+function animate() {
+    requestAnimationFrame(animate)
+    controls.update()
+    mixer.update(clock.getDelta())
+    renderer.render(scene, camera) 
 }
