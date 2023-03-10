@@ -2,17 +2,12 @@ import * as THREE from 'three' ;
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls' ;
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader' ; 
 
-let cameraTransition = Array(Tripple()) 
-
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight) ;
 document.body.appendChild(renderer.domElement) ;
 
 const scene = new THREE.Scene() ;
 scene.background = new THREE.Color(0x808080);
-
-const axesHelper = new THREE.AxesHelper(5) ;
-scene.add(axesHelper) ;
 
 const camera = new THREE.PerspectiveCamera(
     75, //vertical field of view (40-80)
@@ -22,16 +17,19 @@ const camera = new THREE.PerspectiveCamera(
 ) ;
 //posisi kamera
 //camera.position.z = 5 ; //atau
-camera.position.set(0,0,2) ;
+camera.position.set(0, 0.5, 2) ;
 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 
+const axesHelper = new THREE.AxesHelper(5) ;
+scene.add(axesHelper) ;
+
 const clock = new THREE.Clock()
 let mixer ;
 
-initializeLights()
-loadModel()
+initializeLights() ;
+loadModel() ; 
 
 renderer.render(scene, camera) ;
 

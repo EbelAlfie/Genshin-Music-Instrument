@@ -560,21 +560,20 @@ function hmrAccept(bundle, id) {
 var _three = require("three");
 var _orbitControls = require("three/examples/jsm/controls/OrbitControls");
 var _gltfloader = require("three/examples/jsm/loaders/GLTFLoader");
-let cameraTransition = Array(Tripple());
 const renderer = new _three.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 const scene = new _three.Scene();
 scene.background = new _three.Color(0x808080);
-const axesHelper = new _three.AxesHelper(5);
-scene.add(axesHelper);
 const camera = new _three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 //farthest dist
 );
 //posisi kamera
 //camera.position.z = 5 ; //atau
-camera.position.set(0, 0, 2);
+camera.position.set(0, 0.5, 2);
 const controls = new (0, _orbitControls.OrbitControls)(camera, renderer.domElement);
 controls.enableDamping = true;
+const axesHelper = new _three.AxesHelper(5);
+scene.add(axesHelper);
 const clock = new _three.Clock();
 let mixer;
 initializeLights();
