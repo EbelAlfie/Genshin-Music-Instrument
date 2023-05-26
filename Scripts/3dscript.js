@@ -16,7 +16,6 @@ const camera = new THREE.PerspectiveCamera(
     1000 //farthest distance
 ) ;
 //posisi kamera
-//camera.position.z = 5 ; //atau
 camera.position.set(0, 0.5, 2) ;
 
 const controls = new OrbitControls(camera, renderer.domElement)
@@ -40,7 +39,7 @@ function initializeLights() {
     scene.add(ambientLight)
 
     let stageSpotLight = initializeStageLight() //0x8a2be2
-    let lampLightOne = initializeLampLight(1, 3, -4)
+    let lampLightOne = initializeLampLight(0, 1, -4)
     //let lampLightTwo = initializeLampLight(-0.15, 4.7, -4)
     //0xeededed
     scene.add(lampLightOne)
