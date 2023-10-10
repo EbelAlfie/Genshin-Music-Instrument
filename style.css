@@ -29,7 +29,7 @@ body {
     display: flex ;
     flex-direction: row;
     align-items: center;
-    background-image: url(Images/bar.png) ;
+    background-image: url(./static/Assets/Images/bar.png) ;
     background-position: center;
     background-repeat:repeat-x ;
 }
@@ -68,43 +68,43 @@ body {
 }
 
 .musicButton:nth-child(1) {
-    background-image: url('Images/Do.png');
+    background-image: url('./static/Assets/Images/Do.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .musicButton:nth-child(2) {
-    background-image: url('Images/Re.png');
+    background-image: url('./static/Assets/Images/Re.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .musicButton:nth-child(3) {
-    background-image: url('Images/Mi.png');
+    background-image: url('./static/Assets/Images/Mi.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .musicButton:nth-child(4){
-    background-image: url('Images/Fa.png');
+    background-image: url('./static/Assets/Images/Fa.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .musicButton:nth-child(5) {
-    background-image: url('Images/Sol.png');
+    background-image: url('./static/Assets/Images/Sol.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .musicButton:nth-child(6) {
-    background-image: url('Images/La.png');
+    background-image: url('./static/Assets/Images/La.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .musicButton:nth-child(7) {
-    background-image: url('Images/Si.png');
+    background-image: url('./static/Assets/Images/Si.png');
     background-position: center;
     background-repeat: no-repeat;
 }

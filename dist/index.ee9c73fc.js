@@ -53,7 +53,7 @@ for(let i = 0; i < numberOfNotes; i++){
     buttons[i].addEventListener("click", function() {
         //document.getElementById(notes[i] + "Mp3").load();
         //document.getElementById(notes[i] + "Mp3").play(); 
-        new Audio("../Assets/Audio/" + instrumentType + "/" + notes[i] + ".mp3").play();
+        new Audio("./Assets/Audio/" + instrumentType + "/" + notes[i] + ".mp3").play();
     });
 }
 //Keyboard events

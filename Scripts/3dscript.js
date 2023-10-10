@@ -39,7 +39,7 @@ function initializeLights() {
     scene.add(ambientLight)
 
     let stageSpotLight = initializeStageLight() //0x8a2be2
-    let lampLightOne = initializeLampLight(0, 1, -4)
+    let lampLightOne = initializeCustomPositionLamp(0, 1, -4)
     //let lampLightTwo = initializeLampLight(-0.15, 4.7, -4)
     //0xeededed
     scene.add(lampLightOne)
@@ -57,7 +57,7 @@ function initializeStageLight() {
     return stageSpotlight
 }
 
-function initializeLampLight(x, y, z) {
+function initializeCustomPositionLamp(x, y, z) {
     const light = new THREE.DirectionalLight(0x8a2be2, 1);
     light.position.set(x, y, z);
     light.intensity = 10

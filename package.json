@@ -1,9 +1,9 @@
 {
   "name": "genshin-music-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "scripts.js",
+  "description": "Trying to duplicate genshin impact lyre playing",
   "scripts": {
+    "this": "npx parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d dist"
   },
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@parcel/config-default": "^2.8.3",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "three":"0.157.0"
   },
   "staticFiles": {
     "staticOutpath": "Assets"
