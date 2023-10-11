@@ -1,0 +1,4 @@
+var e=[],s=new Map;s.set("q",0),s.set("w",1),s.set("e",2),s.set("r",3),s.set("t",4),s.set("y",5),s.set("u",6),s.set("a",7),s.set("s",8),s.set("d",9),s.set("f",10),s.set("g",11),s.set("h",12),s.set("j",13),s.set("z",14),s.set("x",15),s.set("c",16),s.set("v",17),s.set("b",18),s.set("n",19),s.set("m",20),["do","re","mi","fa","sol","la","si","doAlt","reAlt","miAlt","faAlt","solAlt","laAlt","siAlt","doBass","reBass","miBass","faBass","solBass","laBass","siBass"].forEach((s,t)=>{e[t]=document.getElementById(s),e[t].addEventListener("click",function(){new Audio("./Assets/Audio/Lyre/"+s+".mp3").play()})}),//Keyboard events
+document.body.addEventListener("keydown",t=>{var a=t.key.toLowerCase();e[s.get(a)].click(),e[s.get(a)].classList.add("activeButton")}),document.body.addEventListener("keyup",t=>{var a=t.key.toLowerCase();e[s.get(a)].classList.remove("activeButton")});//# sourceMappingURL=index.6297c5d1.js.map
+
+//# sourceMappingURL=index.6297c5d1.js.map

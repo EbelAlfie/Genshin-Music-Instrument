@@ -1,4 +1,3 @@
-const numberOfNotes = 21 ; //21
 var instrumentType = "Lyre" ;
 const notes = ["do", "re", "mi", "fa", "sol", "la", "si", "doAlt", "reAlt", "miAlt", "faAlt", "solAlt", "laAlt", "siAlt", "doBass", "reBass", "miBass", "faBass", "solBass", "laBass", "siBass"] ;
 var buttons = [] ;
@@ -27,24 +26,51 @@ noteMap.set('b', 18);
 noteMap.set('n', 19);
 noteMap.set('m', 20);
 
-//Initialize buttons
-for(let i=0; i < numberOfNotes; i++) {
-    buttons[i] = document.getElementById(notes[i]) ;
-    buttons[i].addEventListener('click', function(){
-        //document.getElementById(notes[i] + "Mp3").load();
-        //document.getElementById(notes[i] + "Mp3").play(); 
-        new Audio("../Assets/Audio/" + instrumentType + "/" + notes[i] + ".mp3").play() ;
-    })
+main() ;
+
+function main() {
+    //loadAudio() ;
+    initButtons() ;
+    setupUserAction() ;
 }
 
-//Keyboard events
-document.body.addEventListener('keydown', e =>{ //when pressed
-    var key = e.key.toLowerCase() ;
-    buttons[noteMap.get(key)].click(); //click the button
-    buttons[noteMap.get(key)].classList.add('activeButton');
-}) ;
+function loadAudio() { //Download all audio to local storage pro: Play faster cons: Hambur kuota
+    notes.forEach((val) => {
+        localStorage.setItem(
+            val, 
+            new Audio("../Assets/Audio/" + instrumentType + "/" + val + ".mp3")
+        );
+    }) ;
+}
 
-document.body.addEventListener('keyup', e =>{ //when finger lifted from key
-    var key = e.key.toLowerCase() ;
-    buttons[noteMap.get(key)].classList.remove('activeButton');
-}) ;
+//Initialize buttons
+function initButtons() {
+    notes.forEach((val, i) => {
+        buttons[i] = document.getElementById(val) ;
+        buttons[i].addEventListener('click', function(){
+            new Audio("../Assets/Audio/" + instrumentType + "/" + val + ".mp3").play() ;
+        })
+    }) ;
+}
+
+function setupUserAction() {
+    //Keyboard events
+    document.body.addEventListener('keydown', e => { //when pressed
+        var key = e.key.toLowerCase() ;
+        buttons[noteMap.get(key)].click(); //click the button
+        buttons[noteMap.get(key)].classList.add('activeButton');
+    }) ;
+
+    document.body.addEventListener('keyup', e => { //when finger lifted from key
+        var key = e.key.toLowerCase() ;
+        buttons[noteMap.get(key)].classList.remove('activeButton');
+    }) ;
+    //document.body.addEventListener('unload', deleteLocal())
+}
+
+function deleteLocal() {
+    console.log("test") ;
+    notes.forEach((val) => {
+        localStorage.removeItem(val) ;
+    }) ;
+}

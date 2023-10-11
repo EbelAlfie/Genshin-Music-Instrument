@@ -16,13 +16,12 @@ const camera = new THREE.PerspectiveCamera(
     1000 //farthest distance
 ) ;
 //posisi kamera
-camera.position.set(0, 0.5, 2) ;
+camera.position.set(-0.5, 0.4, 0.7) ;
 
 const controls = new OrbitControls(camera, renderer.domElement)
 controls.enableDamping = true
 
-const axesHelper = new THREE.AxesHelper(5) ;
-scene.add(axesHelper) ;
+//initAxisHelper() ; //uncomment for axis helper
 
 const clock = new THREE.Clock()
 let mixer ;
@@ -33,6 +32,12 @@ loadModel() ;
 renderer.render(scene, camera) ;
 
 animate() ;
+
+/** Use this for axis helper */
+function initAxisHelper() {
+    const axesHelper = new THREE.AxesHelper(5) ;
+    scene.add(axesHelper) ;
+}
 
 function initializeLights() {
     const ambientLight = new THREE.AmbientLight()
@@ -61,8 +66,8 @@ function initializeCustomPositionLamp(x, y, z) {
     const light = new THREE.DirectionalLight(0x8a2be2, 1);
     light.position.set(x, y, z);
     light.intensity = 10
-    const dLHelper = new THREE.DirectionalLightHelper(light, 5)
-    scene.add(dLHelper) 
+    //const dLHelper = new THREE.DirectionalLightHelper(light, 5)
+    //scene.add(dLHelper) 
     return light
 }
 

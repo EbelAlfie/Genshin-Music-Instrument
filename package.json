@@ -5,7 +5,7 @@
   "scripts": {
     "this": "npx parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npx parcel build index.html"
   },
   "author": "",
   "license": "ISC",
